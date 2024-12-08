@@ -1,0 +1,94 @@
+@import url(./fonts/fonts.css);
+
+:root {
+    --text-color: #6FE4FF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'StratosSkyeng', sans-serif;
+}
+
+body {
+    background-color: #f2f2f2;
+    background-image: url(./images/background.png);
+    background-repeat: no-repeat;
+}
+
+.main {
+    max-width: 1049px;
+    margin: 0 auto;
+    margin-top: 107px;
+    text-align: center;
+}
+
+.main__title {
+    color: var(--text-color);
+    font-size: 84px;
+    line-height: 0.96;
+    font-weight: 400;
+}
+
+.main__button {
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 84px;
+    padding: 15px 33px;
+    background-color: var(--text-color);
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+.main__button:hover {
+    opacity: .8;
+}
+
+.main__button:active {
+    background-color: rgba(146, 178, 191, .2);
+    color: var(--text-color);
+}
+
+.main__img-wrap {
+    width: 100%;
+}
+
+.main__img {
+    max-width: 440px;
+}
+
+.main__quote {
+    font-size: 36px;
+    color: var(--text-color);
+    padding: 32px 94px;
+    text-align: left;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.main__img, .main__quote {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.main__img.show, .main__quote.show {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.main__quote-wrap {
+    background-color: rgba(146, 178, 191, .2);
+    height: 160px;
+}
+
+.main__quote-wrap::before,
+.main__quote-wrap::after {
+    content: "";
+    border-top: 3px solid var(--text-color);
+    display: block;
+    width: 100%;
+    box-shadow: 0 0 16px 4px var(--text-color);
+}
