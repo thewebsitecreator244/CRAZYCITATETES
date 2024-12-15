@@ -11,6 +11,7 @@ let images = [
 
 let randomImg = getRandomElement(images);
 
+
 // Скрывает текущие цитату и изображение
 function hide() {
     image.classList.remove('show');

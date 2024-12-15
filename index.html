@@ -4,25 +4,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRAZYCITATES</title>
+    <title>CRAZYQUOTES</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
     <div class="main">
-        <h1 class="main__title">WELL NOPE</h1>
+        <h1 class="main__title"> CRayzy Quote generator</h1>
         <div class="main__img-wrap">
             <img src="images/1.png" id="image" class="main__img show">
         </div>
         <div class="main__quote-wrap">
-            <p id="quote" class="main__quote show">Кто рано встает, тот потом пожалеет о своем решении.</p>
+            <p id="quote" class="main__quote show">your random quote will be here</p>
         </div>
         
-        <button class="main__button">Сгенерировать цитату</button>
+        <button class="main__button" onclick="GenerateQuote()">Generate quote</button>
     </div>
 
     <script>
-        
+    
+        const quote  = document.getElementById("quote")
+        const image = document.getElementById("image");
+
+        const begining = [
+            "who gets up early", "Don't be afraid to make mistakes,",
+            "When I was born,",
+            "Anyone can throw a stone at a wolf,",
+            "You can't stand when others are working,",
+            "Sometimes, life is life,"
+        ];
+
+        const ending = [
+            "He will regret his decision later.",
+            "Actually, that's when I was born.",
+            "But not everyone can throw a wolf at a stone.",
+            "You have to lie down.",
+            "And you are in it sometimes.",
+            "Be afraid not to make mistakes.",
+        ];
+
+        const images = [
+            '1.png',
+            '2.png',
+            '3.png',
+            '4.png',
+            '5.png',
+            '6.png',
+        ]
+
+        function GenerateQuote() { 
+            let randombeg = getRandomElement(begining)
+            let randomend = getRandomElement(ending)
+            let randomImg = getRandomElement(images);
+            
+            let randomquote = randombeg + " " + randomend
+            hide();
+            
+            function getRandomElement(arr) {
+                let index = Math.floor(Math.random() * arr.length)
+                return arr[index]
+            }
+
+            function hide() {
+                image.classList.remove('show');
+                quote.classList.remove('show');
+                // Показывает следующие цитату и изображение с задержкой в пол секунды, чтобы успел сработать transition
+                setTimeout(show, 500);
+            }
+    
+    // Показывает новые цитату и изображение 
+            function show() {
+                // Проверяет кол-во символов в тексте. Если их меньше 48, то меняет шрифт и выравнивает текст по центру, иначе - стандартные стили
+                if (randomquote.length <= 48) {
+                    quote.style.fontSize = '42px';
+                    quote.style.justifyContent = 'center';
+                } else {
+                    quote.style.fontSize = '';
+                    quote.style.justifyContent = '';
+                }
+    
+                image.src = 'images/' + randomImg;
+                quote.textContent = randomquote
+             
+                image.classList.add('show');
+                quote.classList.add('show');
+            }
+        }
     </script>
 </body>
 
